@@ -1,7 +1,7 @@
 
 let present = document.getElementById("present");
 let absent = document.getElementById("away");
-let paired = document.getElementById("selection");
+let paired = document.getElementById("result");
 const pairProgrammerButton = document.getElementById("pairProgrammerButton");
 
 //New constants and variables
@@ -88,7 +88,7 @@ const renderList = (list) => {
     box.classList.add("student");
     box.setAttribute("draggable", true);
     box.addEventListener("dragstart", dragStart);
-    box.innerText = firstLetterUpperCase(person.firstname);
+    box.innerText = firstLetterUpperCase(person.firstname + " " + person.lastname);
     box.id = person.id;
     present.appendChild(box);
   });
