@@ -90,9 +90,27 @@ const renderList = (list) => {
     box.addEventListener("dragstart", dragStart);
     box.innerText = firstLetterUpperCase(person.firstname + " " + person.lastname);
     box.id = person.id;
+    addClickToMove(box);
+
     present.appendChild(box);
   });
 };
+
+// Click to move functionality 
+function addClickToMove(studentElement) {
+  studentElement.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent event bubbling
+    
+    const currentParent = studentElement.parentElement;
+    
+    // Move student between present and absent sections
+    if (currentParent === present) {
+      absent.appendChild(studentElement);
+    } else if (currentParent === absent) {
+      present.appendChild(studentElement);
+    }
+  });
+}
 
 /* Events for persons who are present */
 present.addEventListener("dragenter", dragEnter);
